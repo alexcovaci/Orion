@@ -9,7 +9,7 @@ class BrowserWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        windowContainer.register(service: TabsCoordinator() as TabsCoordinator)
+        registerCoordinators()
         
         let browserController = NSStoryboard.mainStoryboard
             .instantiateController(identifier: BrowserViewController.identifier()) { [weak self] coder in
@@ -18,5 +18,10 @@ class BrowserWindowController: NSWindowController {
         }
         
         contentViewController = browserController
+    }
+    
+    private func registerCoordinators() {
+        windowContainer.register(service: TabsCoordinator.self)
+        windowContainer.register(service: ScriptsCoordinator.self)
     }
 }

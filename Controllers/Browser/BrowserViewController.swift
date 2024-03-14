@@ -103,7 +103,7 @@ class BrowserViewController: NSViewController {
             selectedTab = tabsCoordinator.selectedTab()
             contentView.subviews.forEach({ $0.removeFromSuperview()})
             
-            if let view = selectedTab?.webKitController.view {
+            if let view = selectedTab?.webKitController?.view {
                 contentView.addSubview(view)
                 view.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
@@ -126,23 +126,24 @@ extension BrowserViewController {
     }
     
     @IBAction func goBackAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController.goBack()
+        tabsCoordinator.selectedTab()?.webKitController?.goBack()
     }
     
     @IBAction func goForwardAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController.goForward()
+        tabsCoordinator.selectedTab()?.webKitController?.goForward()
     }
     
     @IBAction func refreshAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController.reload()
+        tabsCoordinator.selectedTab()?.webKitController?.reload()
     }
     
     @IBAction func newTabAction(_ sender: Any) {
         tabsCoordinator.addTab(TabModel(url: URL(string: "http://kagi.com")))
+        locationTextField.becomeFirstResponder()
     }
     
     @IBAction func navigateToLocationAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController.navigateToLocation(locationTextField.stringValue)
+        tabsCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextField.stringValue)
         
         locationTextField.resignFirstResponder()
     }

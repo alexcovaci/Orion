@@ -4,7 +4,7 @@ import Combine
 
 class TabModel: Identifiable, Equatable {
     private var cancellables = Set<AnyCancellable>()
-    private(set) var webKitController: WebKitViewController!
+    private(set) var webKitController: WebKitViewController?
     let id: String = UUID().uuidString
     @Published var isSelected: Bool = false
     @Published var title: String? = nil
@@ -19,10 +19,13 @@ class TabModel: Identifiable, Equatable {
     
     init(url: URL? = nil) {
         self.url = url
-        self.webKitController = WebKitViewController(tabModel: self)
+    }
+    
+    func createWebKitController(dependencyContainer: DependencyContainer) {
+        webKitController = WebKitViewController(tabModel: self, dependencyContainer: dependencyContainer)
         
         if let url {
-            webKitController.navigateToURL(url)
+            webKitController?.navigateToURL(url)
         }
     }
 }

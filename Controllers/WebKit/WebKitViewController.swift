@@ -4,12 +4,16 @@ import WebKit_Private
 
 
 class WebKitViewController: NSViewController {
+    private var dependencyContainer: DependencyContainer
     private var webView: WKWebView!
     private var webViewObservations: [NSKeyValueObservation] = []
     private weak var tabModel: TabModel!
+    @Injected var scriptsCoordinator: ScriptsCoordinator
     
     
-    init(tabModel: TabModel) {
+    init(tabModel: TabModel, dependencyContainer: DependencyContainer) {
+        self.dependencyContainer = dependencyContainer
+        self._scriptsCoordinator.setContainer(dependencyContainer)
         self.tabModel = tabModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,6 +36,8 @@ class WebKitViewController: NSViewController {
     
     private func setupWebView() {
         let configuration = WKWebViewConfiguration()
+        configuration.userContentController = WKUserContentController()
+        scriptsCoordinator.setupWebViewConfiguration(configuration)
         webView = WKWebView(frame: .zero, configuration: configuration)
         
         view.addSubview(webView)
@@ -43,6 +49,8 @@ class WebKitViewController: NSViewController {
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
+        webView.isInspectable = true
+        webView._applicationNameForUserAgent = "Orion"
         webView._backgroundColor = NSColor.clear
         
         webView.navigationDelegate = self
@@ -113,6 +121,9 @@ class WebKitViewController: NSViewController {
 extension WebKitViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
         print("webView decidePolicyFor navigationAction \(navigationAction.request.url)")
+        
+        webView.customUserAgent = UserAgentImpersonator.userAgentForHostname(navigationAction.request.url?.host())?.userAgent
+        
         return .allow
     }
     
@@ -137,9 +148,6 @@ extension WebKitViewController: WKNavigationDelegate {
 extension WebKitViewController: WKHistoryDelegatePrivate {
     func _webView(_ webView: WKWebView!, didNavigateWith navigationData: WKNavigationData!) {
         print("didNavigateWith :: \(webView.backForwardList.currentItem?.url) -- \(webView.backForwardList.currentItem?.initialURL) -- \(webView.backForwardList.currentItem?.title)")
-//        if navigationData.destinationURL == navigationData.originalRequest.url {
-//            addHistoryItem(title: navigationData.title, url: navigationData.destinationURL)
-//        }
     }
     
     func _webView(_ webView: WKWebView!, didPerformClientRedirectFrom sourceURL: URL!, to destinationURL: URL!) {
