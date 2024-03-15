@@ -6,6 +6,10 @@ class ScriptsCoordinator: Coordinator {
     private(set) var dependencyContainer: DependencyContainer
     
     
+    init() {
+        fatalError("Always use the designated initializer")
+    }
+    
     required init(dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
     }

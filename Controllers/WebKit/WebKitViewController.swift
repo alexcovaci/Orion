@@ -8,12 +8,17 @@ class WebKitViewController: NSViewController {
     private var webView: WKWebView!
     private var webViewObservations: [NSKeyValueObservation] = []
     private weak var tabModel: TabModel!
+    @Injected var browserCoordinator: BrowserCoordinator
     @Injected var scriptsCoordinator: ScriptsCoordinator
+    @Injected var extensionsCoordinator: ExtensionsCoordinator
     
     
     init(tabModel: TabModel, dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
+        self._browserCoordinator.setContainer(dependencyContainer)
         self._scriptsCoordinator.setContainer(dependencyContainer)
+        self._extensionsCoordinator.setContainer(dependencyContainer)
+        
         self.tabModel = tabModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -99,7 +104,7 @@ class WebKitViewController: NSViewController {
         func sanitizedURL() -> URL {
             var sanitizedLocation = location
             if !location.starts(with: "http") && !location.contains("://") {
-                sanitizedLocation = "http://\(location)"
+                sanitizedLocation = "https://\(location)"
             }
             
             if sanitizedLocation.isValidURL, let url = URL(string: sanitizedLocation) {
@@ -120,45 +125,62 @@ class WebKitViewController: NSViewController {
 
 extension WebKitViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
-        print("webView decidePolicyFor navigationAction \(navigationAction.request.url)")
-        
         webView.customUserAgent = UserAgentImpersonator.userAgentForHostname(navigationAction.request.url?.host())?.userAgent
+        
+        if let url = navigationAction.request.url {
+            if url.host() == "addons.mozilla.org" && url.lastPathComponent.hasSuffix(".xpi") {
+                Task {
+                    guard let window = self.view.window else { return }
+                    
+                    do {
+                        let fetchedExtension = try await extensionsCoordinator.fetchExtensionFromUrl(url)
+                        guard let name = fetchedExtension.manifest.name else { return }
+                        
+                        if extensionsCoordinator.isExtensionInstalled(fetchedExtension) {
+                            extensionsCoordinator.cleanupFetchedExtension(fetchedExtension)
+                            
+                            let alert = SimpleAlert()
+                            alert.setMessage("This extension is already installed.")
+                            alert.addButton("Ok", action: {})
+                            await alert.beginSheetModal(for: window)
+                            
+                            return
+                        }
+                        
+                        let alert = SimpleAlert()
+                        alert.setMessage("Would you like to add the web extension '\(name)'?")
+                        alert.addButton("Add") { [weak self] in
+                            guard let self else { return }
+                            extensionsCoordinator.installExtension(fetchedExtension)
+                        }
+                        alert.addButton("Cancel") { [weak self] in
+                            guard let self else { return }
+                            extensionsCoordinator.cleanupFetchedExtension(fetchedExtension)
+                        }
+                        await alert.beginSheetModal(for: window)
+                    } catch {
+                        let alert = SimpleAlert()
+                        alert.setMessage("Something went wrong, please try again.")
+                        alert.addButton("Ok", action: {})
+                        await alert.beginSheetModal(for: window)
+                    }
+                }
+                
+                return .cancel
+            }
+        }
         
         return .allow
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse) async -> WKNavigationResponsePolicy {
-        print("webView decidePolicyFor navigationResponse \(navigationResponse.response.url)")
         return .allow
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("webView didFailProvisionalNavigation \(navigation)")
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: any Error) {
-        print("webView didFail \(navigation)")
-    }
-    
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
-        print("webView didFailProvisionalNavigation \(navigation)")
     }
 }
 
 extension WebKitViewController: WKHistoryDelegatePrivate {
-    func _webView(_ webView: WKWebView!, didNavigateWith navigationData: WKNavigationData!) {
-        print("didNavigateWith :: \(webView.backForwardList.currentItem?.url) -- \(webView.backForwardList.currentItem?.initialURL) -- \(webView.backForwardList.currentItem?.title)")
-    }
-    
-    func _webView(_ webView: WKWebView!, didPerformClientRedirectFrom sourceURL: URL!, to destinationURL: URL!) {
-        print("didPerformClientRedirectFrom :: \(sourceURL) -- \(destinationURL)")
-    }
-    
-    func _webView(_ webView: WKWebView!, didPerformServerRedirectFrom sourceURL: URL!, to destinationURL: URL!) {
-        print("didPerformServerRedirectFrom :: \(sourceURL) -- \(destinationURL)")
-    }
-    
     func _webView(_ webView: WKWebView!, didUpdateHistoryTitle title: String!, for URL: URL!) {
-        print("didUpdateHistoryTitle :: \(title) -- \(URL)")
+        guard let urlString = webView.backForwardList.currentItem?.url.absoluteString else { return }
+        browserCoordinator.history.addHistoryItem(title: title, url: urlString)
     }
 }

@@ -13,12 +13,14 @@ class BrowserViewController: NSViewController {
     private var cancellables = Set<AnyCancellable>()
     private var tabCancellables = Set<AnyCancellable>()
     private var selectedTab: TabModel? = nil
-    @Injected var tabsCoordinator: TabsCoordinator
+    @Injected var browserCoordinator: BrowserCoordinator
+    @Injected var extensionsCoordinator: ExtensionsCoordinator
     
     
     init?(coder: NSCoder, dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
-        self._tabsCoordinator.setContainer(dependencyContainer)
+        self._browserCoordinator.setContainer(dependencyContainer)
+        self._extensionsCoordinator.setContainer(dependencyContainer)
         super.init(coder: coder)
     }
     
@@ -40,7 +42,7 @@ class BrowserViewController: NSViewController {
     }
     
     private func setupBindings() {
-        tabsCoordinator.tabsChange
+        browserCoordinator.tabsChange
             .sink(receiveValue: { [weak self] tabs in
                 self?.setupTabBindings()
                 self?.updateTabs(tabs)
@@ -52,15 +54,22 @@ class BrowserViewController: NSViewController {
             })
             .store(in: &cancellables)
         
+        extensionsCoordinator.$extensions
+            .sink { extensions in
+                let names = extensions.map({ $0.manifest.name })
+                print("have extensions: \(names)")
+            }
+            .store(in: &cancellables)
+        
         tabsView.onSelect
             .sink { [weak self] tab in
-                self?.tabsCoordinator.selectTab(tab)
+                self?.browserCoordinator.selectTab(tab)
             }
             .store(in: &cancellables)
         
         tabsView.onClose
             .sink { [weak self] tab in
-                self?.tabsCoordinator.closeTab(tab)
+                self?.browserCoordinator.closeTab(tab)
             }
             .store(in: &cancellables)
     }
@@ -68,21 +77,21 @@ class BrowserViewController: NSViewController {
     private func setupTabBindings() {
         tabCancellables.removeAll()
         
-        tabsCoordinator.selectedTab()?.$url
+        browserCoordinator.selectedTab()?.$url
             .receive(on: RunLoop.main)
             .sink { [weak self] url in
                 self?.locationTextField.stringValue = url?.absoluteString ?? ""
             }
             .store(in: &tabCancellables)
         
-        tabsCoordinator.selectedTab()?.$canGoBack
+        browserCoordinator.selectedTab()?.$canGoBack
             .receive(on: RunLoop.main)
             .sink { [weak self] canGoBack in
                 self?.goBackToolbarItem.action = canGoBack ? #selector(self?.goBackAction) : nil
             }
             .store(in: &tabCancellables)
         
-        tabsCoordinator.selectedTab()?.$canGoForward
+        browserCoordinator.selectedTab()?.$canGoForward
             .receive(on: RunLoop.main)
             .sink { [weak self] canGoForward in
                 self?.goForwardToolbarItem.action = canGoForward ? #selector(self?.goForwardAction) : nil
@@ -91,7 +100,7 @@ class BrowserViewController: NSViewController {
     }
     
     private func openLandingTab() {
-        tabsCoordinator.addTab(TabModel(url: URL(string: "http://kagi.com")))
+        browserCoordinator.addTab(TabModel(url: URL(string: "https://kagi.com")))
     }
     
     private func updateTabs(_ tabs: [TabModel]) {
@@ -99,8 +108,8 @@ class BrowserViewController: NSViewController {
     }
     
     private func updateCurrentWebKitView() {
-        if selectedTab != tabsCoordinator.selectedTab() {
-            selectedTab = tabsCoordinator.selectedTab()
+        if selectedTab != browserCoordinator.selectedTab() {
+            selectedTab = browserCoordinator.selectedTab()
             contentView.subviews.forEach({ $0.removeFromSuperview()})
             
             if let view = selectedTab?.webKitController?.view {
@@ -126,24 +135,24 @@ extension BrowserViewController {
     }
     
     @IBAction func goBackAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController?.goBack()
+        browserCoordinator.selectedTab()?.webKitController?.goBack()
     }
     
     @IBAction func goForwardAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController?.goForward()
+        browserCoordinator.selectedTab()?.webKitController?.goForward()
     }
     
     @IBAction func refreshAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController?.reload()
+        browserCoordinator.selectedTab()?.webKitController?.reload()
     }
     
     @IBAction func newTabAction(_ sender: Any) {
-        tabsCoordinator.addTab(TabModel(url: URL(string: "http://kagi.com")))
+        browserCoordinator.addTab(TabModel(url: URL(string: "https://kagi.com")))
         locationTextField.becomeFirstResponder()
     }
     
     @IBAction func navigateToLocationAction(_ sender: Any) {
-        tabsCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextField.stringValue)
+        browserCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextField.stringValue)
         
         locationTextField.resignFirstResponder()
     }

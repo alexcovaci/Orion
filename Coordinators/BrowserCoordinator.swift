@@ -2,13 +2,24 @@ import Foundation
 import Combine
 
 
-class TabsCoordinator {
+class BrowserCoordinator: Coordinator {
+    private(set) var dependencyContainer: DependencyContainer
     private(set) var tabs: [TabModel] = []
+    private(set) var history: HistoryService = HistoryService()
     let tabsChange = PassthroughSubject<[TabModel], Never>()
     
     
+    init() {
+        fatalError("Always use the designated initializer")
+    }
+    
+    required init(dependencyContainer: DependencyContainer) {
+        self.dependencyContainer = dependencyContainer
+    }
+    
     func addTab(_ tab: TabModel) {
         tabs.append(tab)
+        tab.createWebKitController(dependencyContainer: dependencyContainer)
         selectTab(tab)
     }
     
