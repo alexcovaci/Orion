@@ -55,4 +55,18 @@ struct IconsModel: Codable {
              thirtyTwo = "32",
              fortyEight = "48"
     }
+    
+    var largestImage: String? {
+        if let fortyEight = fortyEight, !fortyEight.isEmpty {
+            return fortyEight
+        } else if let thirtyTwo = thirtyTwo, !thirtyTwo.isEmpty {
+            return thirtyTwo
+        } else if let twentyFour = twentyFour, !twentyFour.isEmpty {
+            return twentyFour
+        } else if let sixteen = sixteen, !sixteen.isEmpty {
+            return sixteen
+        }
+        
+        return nil
+    }
 }

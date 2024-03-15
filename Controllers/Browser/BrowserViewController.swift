@@ -55,9 +55,9 @@ class BrowserViewController: NSViewController {
             .store(in: &cancellables)
         
         extensionsCoordinator.$extensions
-            .sink { extensions in
-                let names = extensions.map({ $0.manifest.name })
-                print("have extensions: \(names)")
+            .receive(on: RunLoop.main)
+            .sink { [weak self] extensions in
+                self?.updateToolbarWithExtensions(extensions)
             }
             .store(in: &cancellables)
         
@@ -124,14 +124,34 @@ class BrowserViewController: NSViewController {
             }
         }
     }
+    
+    private func updateToolbarWithExtensions(_ extensions: [ExtensionModel]) {
+        extensions.forEach { extensionModel in
+            let itemIdentifier = NSToolbarItem.Identifier(extensionModel.id)
+            
+            if toolbar.items.contains(where: { $0.itemIdentifier == itemIdentifier }) {
+                return
+            }
+            
+            toolbar.insertItem(withItemIdentifier: itemIdentifier, at: toolbar.items.count)
+        }
+    }
 }
 
-extension BrowserViewController {
+extension BrowserViewController: NSToolbarDelegate {
     private func setupToolbar() {
+        toolbar.delegate = self
+        
         view.window?.toolbar = toolbar
         view.window?.toolbarStyle = .unified
         
         locationTextField.focusRingType = .none
+    }
+    
+    @objc private func extensionToolbarItemClicked(_ toolbarItem: NSToolbarItem) {
+        let extensionId = toolbarItem.itemIdentifier.rawValue
+        let extensionModel = extensionsCoordinator.extensions.first(where: { $0.id == extensionId })
+        print("clicked \(extensionId) -- \(extensionModel?.manifest.name ?? "<>")")
     }
     
     @IBAction func goBackAction(_ sender: Any) {
@@ -155,5 +175,26 @@ extension BrowserViewController {
         browserCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextField.stringValue)
         
         locationTextField.resignFirstResponder()
+    }
+    
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        let extensionId = itemIdentifier.rawValue
+        guard let extensionModel = extensionsCoordinator.extensions.first(where: { $0.id == extensionId }) else { return nil }
+        
+        let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
+        toolbarItem.isBordered = true
+        toolbarItem.label = extensionModel.manifest.name ?? ""
+        toolbarItem.paletteLabel = extensionModel.manifest.name ?? ""
+        toolbarItem.toolTip = extensionModel.manifest.name ?? ""
+        toolbarItem.target = self
+        toolbarItem.action = #selector(extensionToolbarItemClicked(_:))
+        
+        if let largestImage = extensionModel.manifest.icons?.largestImage {
+            let imagePath = extensionModel.directory.appending(path: largestImage)
+            let image = NSImage(contentsOf: imagePath)
+            toolbarItem.image = image
+        }
+        
+        return toolbarItem
     }
 }

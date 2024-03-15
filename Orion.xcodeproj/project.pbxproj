@@ -169,13 +169,6 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
-		28590ECD2BA45CAF00B5A856 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		285FA2252B9E350F005702AA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,7 +234,6 @@
 				2801AD622B9E6C040039C92B /* WebKit */,
 				28667A962B9DF00500F51F57 /* Storyboards */,
 				285FA2252B9E350F005702AA /* Extensions */,
-				28590ECD2BA45CAF00B5A856 /* Helpers */,
 				2801AD7F2BA0820E0039C92B /* Dependencies */,
 				285FA22B2B9E388B005702AA /* Coordinators */,
 				28590EB02BA341CE00B5A856 /* Services */,
