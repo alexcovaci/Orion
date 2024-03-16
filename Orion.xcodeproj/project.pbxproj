@@ -22,7 +22,6 @@
 		2801AD832BA084060039C92B /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801AD822BA084060039C92B /* Injected.swift */; };
 		28590EAE2BA335E600B5A856 /* ImpersonatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EAD2BA335E600B5A856 /* ImpersonatorModel.swift */; };
 		28590EB22BA341F000B5A856 /* UserAgentImpersonator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EB12BA341F000B5A856 /* UserAgentImpersonator.swift */; };
-		28590EB42BA34A7200B5A856 /* ScriptsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EB32BA34A7200B5A856 /* ScriptsCoordinator.swift */; };
 		28590EB62BA34BE900B5A856 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EB52BA34BE900B5A856 /* Coordinator.swift */; };
 		28590EB92BA351CF00B5A856 /* addons_mozilla_org_change_button_title.js in Resources */ = {isa = PBXBuildFile; fileRef = 28590EB82BA351CF00B5A856 /* addons_mozilla_org_change_button_title.js */; };
 		28590EC42BA3A5DE00B5A856 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 28590EC32BA3A5DE00B5A856 /* Zip */; };
@@ -32,6 +31,13 @@
 		28590ECC2BA457BF00B5A856 /* ExtensionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ECB2BA457BF00B5A856 /* ExtensionModel.swift */; };
 		28590ED12BA4934D00B5A856 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ED02BA4934D00B5A856 /* HistoryService.swift */; };
 		28590ED32BA493BC00B5A856 /* HistoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ED22BA493BC00B5A856 /* HistoryItemModel.swift */; };
+		28590ED62BA4FE0900B5A856 /* ExtensionPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ED52BA4FE0900B5A856 /* ExtensionPopupViewController.swift */; };
+		28590ED82BA50CE400B5A856 /* LocalExtensionSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ED72BA50CE400B5A856 /* LocalExtensionSchemeHandler.swift */; };
+		28590EDA2BA50F0A00B5A856 /* URL+mime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590ED92BA50F0A00B5A856 /* URL+mime.swift */; };
+		28590EDC2BA51B3400B5A856 /* extensions_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 28590EDB2BA51B3400B5A856 /* extensions_api.js */; };
+		28590EE22BA5CCCA00B5A856 /* ScriptInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE12BA5CCCA00B5A856 /* ScriptInjector.swift */; };
+		28590EE42BA5CCE300B5A856 /* BrowserAPIBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */; };
+		28590EE62BA5D53600B5A856 /* BrowserAPIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */; };
 		285FA2202B9E3161005702AA /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA21F2B9E3161005702AA /* WebKitViewController.swift */; };
 		285FA2232B9E325F005702AA /* TabCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */; };
 		285FA2242B9E325F005702AA /* TabCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */; };
@@ -62,7 +68,6 @@
 		2801AD822BA084060039C92B /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		28590EAD2BA335E600B5A856 /* ImpersonatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpersonatorModel.swift; sourceTree = "<group>"; };
 		28590EB12BA341F000B5A856 /* UserAgentImpersonator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentImpersonator.swift; sourceTree = "<group>"; };
-		28590EB32BA34A7200B5A856 /* ScriptsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsCoordinator.swift; sourceTree = "<group>"; };
 		28590EB52BA34BE900B5A856 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		28590EB82BA351CF00B5A856 /* addons_mozilla_org_change_button_title.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = addons_mozilla_org_change_button_title.js; sourceTree = "<group>"; };
 		28590EC52BA3A60400B5A856 /* ExtensionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsCoordinator.swift; sourceTree = "<group>"; };
@@ -71,6 +76,13 @@
 		28590ECB2BA457BF00B5A856 /* ExtensionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionModel.swift; sourceTree = "<group>"; };
 		28590ED02BA4934D00B5A856 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		28590ED22BA493BC00B5A856 /* HistoryItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemModel.swift; sourceTree = "<group>"; };
+		28590ED52BA4FE0900B5A856 /* ExtensionPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPopupViewController.swift; sourceTree = "<group>"; };
+		28590ED72BA50CE400B5A856 /* LocalExtensionSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalExtensionSchemeHandler.swift; sourceTree = "<group>"; };
+		28590ED92BA50F0A00B5A856 /* URL+mime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+mime.swift"; sourceTree = "<group>"; };
+		28590EDB2BA51B3400B5A856 /* extensions_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = extensions_api.js; sourceTree = "<group>"; };
+		28590EE12BA5CCCA00B5A856 /* ScriptInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptInjector.swift; sourceTree = "<group>"; };
+		28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIBridge.swift; sourceTree = "<group>"; };
+		28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIMessage.swift; sourceTree = "<group>"; };
 		285FA21F2B9E3161005702AA /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewItem.swift; sourceTree = "<group>"; };
 		285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -152,21 +164,42 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		28590EB02BA341CE00B5A856 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				28590EB12BA341F000B5A856 /* UserAgentImpersonator.swift */,
-				28590ED02BA4934D00B5A856 /* HistoryService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		28590EB72BA3516A00B5A856 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
 				28590EB82BA351CF00B5A856 /* addons_mozilla_org_change_button_title.js */,
+				28590EDB2BA51B3400B5A856 /* extensions_api.js */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		28590ED42BA4FDF100B5A856 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2801AD7F2BA0820E0039C92B /* Dependencies */,
+				28590EDE2BA5C99300B5A856 /* Browser */,
+				28590EE02BA5CBCC00B5A856 /* History */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		28590EDE2BA5C99300B5A856 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				28590EB12BA341F000B5A856 /* UserAgentImpersonator.swift */,
+				28590EE12BA5CCCA00B5A856 /* ScriptInjector.swift */,
+				28590ED72BA50CE400B5A856 /* LocalExtensionSchemeHandler.swift */,
+				28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
+		28590EE02BA5CBCC00B5A856 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				28590ED02BA4934D00B5A856 /* HistoryService.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		285FA2252B9E350F005702AA /* Extensions */ = {
@@ -175,17 +208,9 @@
 				285FA2262B9E351D005702AA /* NSObject+Identifier.swift */,
 				2801AD792B9F403D0039C92B /* NSStoryboard+Shortcuts.swift */,
 				2801AD7B2B9F492C0039C92B /* String+ValidURL.swift */,
+				28590ED92BA50F0A00B5A856 /* URL+mime.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		285FA2282B9E3625005702AA /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				285FA2302B9E3966005702AA /* Browser */,
-				285FA2312B9E397C005702AA /* WebKit */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		285FA22A2B9E3715005702AA /* Models */ = {
@@ -196,6 +221,7 @@
 				28590ECB2BA457BF00B5A856 /* ExtensionModel.swift */,
 				28590EC72BA3BAF800B5A856 /* ExtensionManifestModel.swift */,
 				28590ED22BA493BC00B5A856 /* HistoryItemModel.swift */,
+				28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,27 +231,20 @@
 			children = (
 				28590EB52BA34BE900B5A856 /* Coordinator.swift */,
 				285FA22E2B9E393D005702AA /* BrowserCoordinator.swift */,
-				28590EB32BA34A7200B5A856 /* ScriptsCoordinator.swift */,
 				28590EC52BA3A60400B5A856 /* ExtensionsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		285FA2302B9E3966005702AA /* Browser */ = {
+		285FA2302B9E3966005702AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				28667A972B9DF0C500F51F57 /* BrowserWindowController.swift */,
 				28667A892B9DEFD200F51F57 /* BrowserViewController.swift */,
-			);
-			path = Browser;
-			sourceTree = "<group>";
-		};
-		285FA2312B9E397C005702AA /* WebKit */ = {
-			isa = PBXGroup;
-			children = (
 				285FA21F2B9E3161005702AA /* WebKitViewController.swift */,
+				28590ED52BA4FE0900B5A856 /* ExtensionPopupViewController.swift */,
 			);
-			path = WebKit;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		28667A7B2B9DEFD200F51F57 = {
@@ -234,12 +253,11 @@
 				2801AD622B9E6C040039C92B /* WebKit */,
 				28667A962B9DF00500F51F57 /* Storyboards */,
 				285FA2252B9E350F005702AA /* Extensions */,
-				2801AD7F2BA0820E0039C92B /* Dependencies */,
 				285FA22B2B9E388B005702AA /* Coordinators */,
-				28590EB02BA341CE00B5A856 /* Services */,
 				285FA22A2B9E3715005702AA /* Models */,
+				28590ED42BA4FDF100B5A856 /* Utilities */,
 				2801AD732B9F26320039C92B /* Views */,
-				285FA2282B9E3625005702AA /* Controllers */,
+				285FA2302B9E3966005702AA /* Controllers */,
 				28667A862B9DEFD200F51F57 /* Orion */,
 				28590EAF2BA3369D00B5A856 /* Resources */,
 				28667A852B9DEFD200F51F57 /* Products */,
@@ -346,6 +364,7 @@
 			files = (
 				28590EB92BA351CF00B5A856 /* addons_mozilla_org_change_button_title.js in Resources */,
 				2801AD772B9F266C0039C92B /* TabsView.xib in Resources */,
+				28590EDC2BA51B3400B5A856 /* extensions_api.js in Resources */,
 				28667A8C2B9DEFD300F51F57 /* Assets.xcassets in Resources */,
 				2801AD6C2B9E6C0D0039C92B /* com.apple.WebKit.Model.xpc in Resources */,
 				2801AD6D2B9E6C0D0039C92B /* com.apple.WebKit.GPU.xpc in Resources */,
@@ -366,10 +385,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				28590EB22BA341F000B5A856 /* UserAgentImpersonator.swift in Sources */,
+				28590EDA2BA50F0A00B5A856 /* URL+mime.swift in Sources */,
+				28590EE42BA5CCE300B5A856 /* BrowserAPIBridge.swift in Sources */,
 				2801AD7A2B9F403D0039C92B /* NSStoryboard+Shortcuts.swift in Sources */,
 				285FA2332B9E3994005702AA /* TabModel.swift in Sources */,
+				28590EE62BA5D53600B5A856 /* BrowserAPIMessage.swift in Sources */,
 				28590EC62BA3A60400B5A856 /* ExtensionsCoordinator.swift in Sources */,
-				28590EB42BA34A7200B5A856 /* ScriptsCoordinator.swift in Sources */,
 				28590ECC2BA457BF00B5A856 /* ExtensionModel.swift in Sources */,
 				28590EC82BA3BAF800B5A856 /* ExtensionManifestModel.swift in Sources */,
 				285FA2272B9E351D005702AA /* NSObject+Identifier.swift in Sources */,
@@ -378,9 +399,11 @@
 				2801AD832BA084060039C92B /* Injected.swift in Sources */,
 				28590ED32BA493BC00B5A856 /* HistoryItemModel.swift in Sources */,
 				2801AD7C2B9F492C0039C92B /* String+ValidURL.swift in Sources */,
+				28590ED82BA50CE400B5A856 /* LocalExtensionSchemeHandler.swift in Sources */,
 				28590EB62BA34BE900B5A856 /* Coordinator.swift in Sources */,
 				2801AD752B9F265A0039C92B /* TabsView.swift in Sources */,
 				28667A8A2B9DEFD200F51F57 /* BrowserViewController.swift in Sources */,
+				28590EE22BA5CCCA00B5A856 /* ScriptInjector.swift in Sources */,
 				28667A982B9DF0C500F51F57 /* BrowserWindowController.swift in Sources */,
 				2801AD812BA0821F0039C92B /* DependencyContainer.swift in Sources */,
 				285FA2202B9E3161005702AA /* WebKitViewController.swift in Sources */,
@@ -388,6 +411,7 @@
 				28590EAE2BA335E600B5A856 /* ImpersonatorModel.swift in Sources */,
 				28590ECA2BA44D3A00B5A856 /* SimpleAlert.swift in Sources */,
 				285FA22F2B9E393D005702AA /* BrowserCoordinator.swift in Sources */,
+				28590ED62BA4FE0900B5A856 /* ExtensionPopupViewController.swift in Sources */,
 				28667A882B9DEFD200F51F57 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -150,8 +150,24 @@ extension BrowserViewController: NSToolbarDelegate {
     
     @objc private func extensionToolbarItemClicked(_ toolbarItem: NSToolbarItem) {
         let extensionId = toolbarItem.itemIdentifier.rawValue
-        let extensionModel = extensionsCoordinator.extensions.first(where: { $0.id == extensionId })
-        print("clicked \(extensionId) -- \(extensionModel?.manifest.name ?? "<>")")
+        guard let extensionModel = extensionsCoordinator
+            .extensions
+            .first(where: { $0.id == extensionId }) else {
+            return
+        }
+        
+        if extensionModel.manifest.browserAction?.defaultPopup?.isEmpty ?? true {
+            return
+        }
+        
+        let popover = NSPopover()
+        popover.behavior = .semitransient
+        popover.contentSize = CGSize(width: 300, height: 400)
+        popover.contentViewController = ExtensionPopupViewController(
+            extensionModel: extensionModel,
+            dependencyContainer: dependencyContainer
+        )
+        popover.show(relativeTo: toolbarItem)
     }
     
     @IBAction func goBackAction(_ sender: Any) {
@@ -190,7 +206,7 @@ extension BrowserViewController: NSToolbarDelegate {
         toolbarItem.action = #selector(extensionToolbarItemClicked(_:))
         
         if let largestImage = extensionModel.manifest.icons?.largestImage {
-            let imagePath = extensionModel.directory.appending(path: largestImage)
+            let imagePath = extensionModel.directory.appending(path: largestImage, directoryHint: .notDirectory)
             let image = NSImage(contentsOf: imagePath)
             toolbarItem.image = image
         }

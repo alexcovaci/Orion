@@ -47,10 +47,10 @@ class HistoryService {
     private func setup() {
         guard let documentsDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return }
         
-        let directoryUrl = documentsDirectory.appendingPathComponent("History")
+        let directoryUrl = documentsDirectory.appending(path: "History", directoryHint: .isDirectory)
         try? FileManager.default.createDirectory(at: directoryUrl, withIntermediateDirectories: true, attributes: nil)
         
-        historyCatalogueUrl = directoryUrl.appendingPathComponent("catalogue.json")
+        historyCatalogueUrl = directoryUrl.appending(path: "catalogue.json", directoryHint: .notDirectory)
     }
     
     private func loadHistory() {

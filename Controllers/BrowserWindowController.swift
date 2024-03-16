@@ -22,7 +22,6 @@ class BrowserWindowController: NSWindowController {
     
     private func registerCoordinators() {
         windowContainer.register(service: BrowserCoordinator.self)
-        windowContainer.register(service: ScriptsCoordinator.self)
         windowContainer.register(service: ExtensionsCoordinator.self)
     }
 }

@@ -9,14 +9,12 @@ class WebKitViewController: NSViewController {
     private var webViewObservations: [NSKeyValueObservation] = []
     private weak var tabModel: TabModel!
     @Injected var browserCoordinator: BrowserCoordinator
-    @Injected var scriptsCoordinator: ScriptsCoordinator
     @Injected var extensionsCoordinator: ExtensionsCoordinator
     
     
     init(tabModel: TabModel, dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
         self._browserCoordinator.setContainer(dependencyContainer)
-        self._scriptsCoordinator.setContainer(dependencyContainer)
         self._extensionsCoordinator.setContainer(dependencyContainer)
         
         self.tabModel = tabModel
@@ -42,7 +40,7 @@ class WebKitViewController: NSViewController {
     private func setupWebView() {
         let configuration = WKWebViewConfiguration()
         configuration.userContentController = WKUserContentController()
-        scriptsCoordinator.setupWebViewConfiguration(configuration)
+        ScriptInjector.setupContentWebViewConfiguration(configuration)
         webView = WKWebView(frame: .zero, configuration: configuration)
         
         view.addSubview(webView)

@@ -28,7 +28,7 @@ class ExtensionsCoordinator: Coordinator {
         
         guard let extensionDirectory = try await unpackExtensionFromUrl(url, extensionId: extensionId) else { throw CocoaError(.fileWriteUnknown) }
         
-        let manifestUrl = extensionDirectory.appendingPathComponent("manifest.json")
+        let manifestUrl = extensionDirectory.appending(path: "manifest.json", directoryHint: .notDirectory)
         let jsonData = try Data(contentsOf: manifestUrl)
         let manifest = try JSONDecoder().decode(ExtensionManifestModel.self, from: jsonData)
         
@@ -52,7 +52,7 @@ class ExtensionsCoordinator: Coordinator {
         
         if isExtensionInstalled(`extension`) { return }
         
-        let destinationDirectory = extensionsDirectoryUrl.appendingPathComponent(`extension`.id)
+        let destinationDirectory = extensionsDirectoryUrl.appending(path: `extension`.id, directoryHint: .isDirectory)
         try? FileManager.default.moveItem(at: `extension`.directory, to: destinationDirectory)
         
         let savedExtension = ExtensionModel(
@@ -74,11 +74,11 @@ class ExtensionsCoordinator: Coordinator {
     private func setup() {
         guard let documentsDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return }
         
-        extensionsDirectoryUrl = documentsDirectory.appendingPathComponent("Extensions")
+        extensionsDirectoryUrl = documentsDirectory.appending(path: "Extensions", directoryHint: .isDirectory)
         if let extensionsDirectoryUrl {
             try? FileManager.default.createDirectory(at: extensionsDirectoryUrl, withIntermediateDirectories: true, attributes: nil)
             
-            extensionsCatalogueUrl = extensionsDirectoryUrl.appendingPathComponent("catalogue.json")
+            extensionsCatalogueUrl = extensionsDirectoryUrl.appending(path: "catalogue.json", directoryHint: .notDirectory)
         }
     }
     
@@ -102,11 +102,11 @@ class ExtensionsCoordinator: Coordinator {
     private func unpackExtensionFromUrl(_ url: URL, extensionId: String) async throws -> URL? {
         let outputDirectory = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         let originalFileName = url.lastPathComponent
-        let destinationFileName = outputDirectory.appendingPathComponent(originalFileName)
+        let destinationFileName = outputDirectory.appending(path: originalFileName, directoryHint: .notDirectory)
         
         try await download(from: url, writeTo: destinationFileName)
         
-        let destinationDirectory = outputDirectory.appendingPathComponent(extensionId)
+        let destinationDirectory = outputDirectory.appending(path: extensionId, directoryHint: .isDirectory)
         try FileManager.default.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
         
         try Zip.unzipFile(
