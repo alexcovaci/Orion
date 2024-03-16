@@ -162,7 +162,7 @@ extension BrowserViewController: NSToolbarDelegate {
         
         let popover = NSPopover()
         popover.behavior = .semitransient
-        popover.contentSize = CGSize(width: 300, height: 400)
+        popover.contentSize = CGSize(width: 250, height: 400)
         popover.contentViewController = ExtensionPopupViewController(
             extensionModel: extensionModel,
             dependencyContainer: dependencyContainer

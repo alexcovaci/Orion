@@ -36,6 +36,14 @@ class TabsView: NSView {
         
         let nib = NSNib(nibNamed: NSNib.Name(TabCollectionViewItem.identifier()), bundle: nil)
         tabsCollectionView.register(nib, forItemWithIdentifier: TabCollectionViewItem.userInterfaceIdentifier())
+        
+        let layout = TabsFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        tabsCollectionView.collectionViewLayout = layout
+        
+        tabsCollectionView.enclosingScrollView?.hasHorizontalScroller = false
+        tabsCollectionView.enclosingScrollView?.hasVerticalScroller = false
     }
     
     func update(with newTabs: [TabModel]) {

@@ -38,6 +38,7 @@
 		28590EE22BA5CCCA00B5A856 /* ScriptInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE12BA5CCCA00B5A856 /* ScriptInjector.swift */; };
 		28590EE42BA5CCE300B5A856 /* BrowserAPIBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */; };
 		28590EE62BA5D53600B5A856 /* BrowserAPIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */; };
+		28590EE82BA5E60E00B5A856 /* TabsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE72BA5E60E00B5A856 /* TabsFlowLayout.swift */; };
 		285FA2202B9E3161005702AA /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA21F2B9E3161005702AA /* WebKitViewController.swift */; };
 		285FA2232B9E325F005702AA /* TabCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */; };
 		285FA2242B9E325F005702AA /* TabCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */; };
@@ -83,6 +84,7 @@
 		28590EE12BA5CCCA00B5A856 /* ScriptInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptInjector.swift; sourceTree = "<group>"; };
 		28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIBridge.swift; sourceTree = "<group>"; };
 		28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIMessage.swift; sourceTree = "<group>"; };
+		28590EE72BA5E60E00B5A856 /* TabsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsFlowLayout.swift; sourceTree = "<group>"; };
 		285FA21F2B9E3161005702AA /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewItem.swift; sourceTree = "<group>"; };
 		285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				2801AD762B9F266C0039C92B /* TabsView.xib */,
 				285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */,
 				285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */,
+				28590EE72BA5E60E00B5A856 /* TabsFlowLayout.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				285FA2202B9E3161005702AA /* WebKitViewController.swift in Sources */,
 				28AB35F72B9E507D003B7B23 /* ColoredView.swift in Sources */,
 				28590EAE2BA335E600B5A856 /* ImpersonatorModel.swift in Sources */,
+				28590EE82BA5E60E00B5A856 /* TabsFlowLayout.swift in Sources */,
 				28590ECA2BA44D3A00B5A856 /* SimpleAlert.swift in Sources */,
 				285FA22F2B9E393D005702AA /* BrowserCoordinator.swift in Sources */,
 				28590ED62BA4FE0900B5A856 /* ExtensionPopupViewController.swift in Sources */,
