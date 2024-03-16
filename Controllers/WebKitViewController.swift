@@ -84,6 +84,12 @@ class WebKitViewController: NSViewController {
                 self?.tabModel.canGoForward = self?.webView.canGoForward ?? false
             }
         )
+        
+        webViewObservations.append(
+            webView.observe(\.estimatedProgress) { [weak self] _, _ in
+                self?.tabModel.loadingProgress = self?.webView.estimatedProgress ?? 0.0
+            }
+        )
     }
     
     func goBack() {

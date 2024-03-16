@@ -11,6 +11,7 @@ class TabModel: Identifiable, Equatable {
     @Published var url: URL?
     @Published var canGoBack: Bool = false
     @Published var canGoForward: Bool = false
+    @Published var loadingProgress: Double = 0.0
     
     
     static func == (lhs: TabModel, rhs: TabModel) -> Bool {

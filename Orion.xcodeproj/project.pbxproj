@@ -39,6 +39,8 @@
 		28590EE42BA5CCE300B5A856 /* BrowserAPIBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */; };
 		28590EE62BA5D53600B5A856 /* BrowserAPIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */; };
 		28590EE82BA5E60E00B5A856 /* TabsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE72BA5E60E00B5A856 /* TabsFlowLayout.swift */; };
+		28590EEA2BA642DA00B5A856 /* ProgressTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EE92BA642DA00B5A856 /* ProgressTextFieldView.swift */; };
+		28590EEC2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28590EEB2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift */; };
 		285FA2202B9E3161005702AA /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA21F2B9E3161005702AA /* WebKitViewController.swift */; };
 		285FA2232B9E325F005702AA /* TabCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */; };
 		285FA2242B9E325F005702AA /* TabCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */; };
@@ -85,6 +87,8 @@
 		28590EE32BA5CCE300B5A856 /* BrowserAPIBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIBridge.swift; sourceTree = "<group>"; };
 		28590EE52BA5D53600B5A856 /* BrowserAPIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserAPIMessage.swift; sourceTree = "<group>"; };
 		28590EE72BA5E60E00B5A856 /* TabsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsFlowLayout.swift; sourceTree = "<group>"; };
+		28590EE92BA642DA00B5A856 /* ProgressTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTextFieldView.swift; sourceTree = "<group>"; };
+		28590EEB2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextFieldCell.swift; sourceTree = "<group>"; };
 		285FA21F2B9E3161005702AA /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		285FA2212B9E325F005702AA /* TabCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewItem.swift; sourceTree = "<group>"; };
 		285FA2222B9E325F005702AA /* TabCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 			children = (
 				28AB35F62B9E507D003B7B23 /* ColoredView.swift */,
 				28590EC92BA44D3A00B5A856 /* SimpleAlert.swift */,
+				28590EE92BA642DA00B5A856 /* ProgressTextFieldView.swift */,
+				28590EEB2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -392,9 +398,11 @@
 				28590EE42BA5CCE300B5A856 /* BrowserAPIBridge.swift in Sources */,
 				2801AD7A2B9F403D0039C92B /* NSStoryboard+Shortcuts.swift in Sources */,
 				285FA2332B9E3994005702AA /* TabModel.swift in Sources */,
+				28590EEC2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift in Sources */,
 				28590EE62BA5D53600B5A856 /* BrowserAPIMessage.swift in Sources */,
 				28590EC62BA3A60400B5A856 /* ExtensionsCoordinator.swift in Sources */,
 				28590ECC2BA457BF00B5A856 /* ExtensionModel.swift in Sources */,
+				28590EEA2BA642DA00B5A856 /* ProgressTextFieldView.swift in Sources */,
 				28590EC82BA3BAF800B5A856 /* ExtensionManifestModel.swift in Sources */,
 				285FA2272B9E351D005702AA /* NSObject+Identifier.swift in Sources */,
 				285FA2232B9E325F005702AA /* TabCollectionViewItem.swift in Sources */,

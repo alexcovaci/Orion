@@ -16,11 +16,11 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <collectionViewItem nibName="TabCollectionViewItem" id="208-SR-5Hn" customClass="TabCollectionViewItem" customModule="Orion" customModuleProvider="target"/>
         <view id="MyW-QM-nXr">
-            <rect key="frame" x="0.0" y="0.0" width="112" height="35"/>
+            <rect key="frame" x="0.0" y="0.0" width="102" height="35"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dn2-a7-Hrl">
-                    <rect key="frame" x="38" y="10" width="35" height="16"/>
+                    <rect key="frame" x="33" y="10" width="35" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Title" id="0Rl-H0-lfe">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +28,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BSB-EF-Vxt">
-                    <rect key="frame" x="-7" y="-7" width="126" height="47"/>
+                    <rect key="frame" x="-7" y="-7" width="116" height="47"/>
                     <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="AMr-4s-L4V">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -38,10 +38,10 @@
                     </connections>
                 </button>
                 <button horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8o5-ie-NRJ">
-                    <rect key="frame" x="72" y="4" width="25" height="26"/>
-                    <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="xmark" catalog="system" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="5Bv-gR-4gs">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="systemBold" size="12"/>
+                    <rect key="frame" x="5" y="3.5" width="25.5" height="29"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="xmark" catalog="system" imagePosition="only" alignment="center" inset="2" id="5Bv-gR-4gs">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
                     </buttonCell>
                     <constraints>
                         <constraint firstAttribute="height" priority="900" constant="25" id="Bhc-HC-LUs"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="uqg-B9-rSW" customClass="ColoredView" customModule="Orion" customModuleProvider="target">
-                    <rect key="frame" x="111" y="0.0" width="1" height="35"/>
+                    <rect key="frame" x="101" y="0.0" width="1" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="rYc-mE-edc"/>
                     </constraints>
@@ -66,17 +66,17 @@
             <constraints>
                 <constraint firstItem="BSB-EF-Vxt" firstAttribute="top" secondItem="MyW-QM-nXr" secondAttribute="top" id="3VK-BV-OnM"/>
                 <constraint firstAttribute="bottom" secondItem="BSB-EF-Vxt" secondAttribute="bottom" id="9QQ-1h-S5c"/>
-                <constraint firstAttribute="trailing" secondItem="8o5-ie-NRJ" secondAttribute="trailing" constant="15" id="AdW-Yg-ggX"/>
                 <constraint firstAttribute="bottom" secondItem="uqg-B9-rSW" secondAttribute="bottom" id="CBn-Pa-sCj"/>
                 <constraint firstItem="8o5-ie-NRJ" firstAttribute="top" secondItem="MyW-QM-nXr" secondAttribute="top" constant="5" id="FdV-yi-TdX"/>
                 <constraint firstItem="BSB-EF-Vxt" firstAttribute="leading" secondItem="MyW-QM-nXr" secondAttribute="leading" id="M28-DR-AqJ"/>
                 <constraint firstAttribute="bottom" secondItem="8o5-ie-NRJ" secondAttribute="bottom" constant="5" id="U7y-6w-CxU"/>
                 <constraint firstItem="uqg-B9-rSW" firstAttribute="top" secondItem="MyW-QM-nXr" secondAttribute="top" id="XgP-xV-Xih"/>
-                <constraint firstItem="uqg-B9-rSW" firstAttribute="leading" secondItem="Dn2-a7-Hrl" secondAttribute="trailing" constant="40" id="bje-tF-xCp"/>
+                <constraint firstItem="uqg-B9-rSW" firstAttribute="leading" secondItem="Dn2-a7-Hrl" secondAttribute="trailing" constant="35" id="bje-tF-xCp"/>
                 <constraint firstAttribute="trailing" secondItem="BSB-EF-Vxt" secondAttribute="trailing" id="jdT-5u-HpF"/>
                 <constraint firstAttribute="trailing" secondItem="uqg-B9-rSW" secondAttribute="trailing" id="pgq-ll-1kd"/>
                 <constraint firstItem="Dn2-a7-Hrl" firstAttribute="centerY" secondItem="MyW-QM-nXr" secondAttribute="centerY" id="sxp-qj-yCG"/>
-                <constraint firstItem="Dn2-a7-Hrl" firstAttribute="leading" secondItem="MyW-QM-nXr" secondAttribute="leading" constant="40" id="wgE-iP-tAe"/>
+                <constraint firstItem="8o5-ie-NRJ" firstAttribute="leading" secondItem="MyW-QM-nXr" secondAttribute="leading" constant="5" id="v0b-AQ-AfS"/>
+                <constraint firstItem="Dn2-a7-Hrl" firstAttribute="leading" secondItem="MyW-QM-nXr" secondAttribute="leading" constant="35" id="wgE-iP-tAe"/>
             </constraints>
             <point key="canvasLocation" x="-161.5" y="154.5"/>
         </view>

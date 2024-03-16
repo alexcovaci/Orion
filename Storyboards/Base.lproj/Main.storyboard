@@ -745,7 +745,7 @@
                         <outlet property="contentView" destination="AXk-jO-qmm" id="hDP-a1-0Wz"/>
                         <outlet property="goBackToolbarItem" destination="9bF-Lq-Gs5" id="Obs-7b-czP"/>
                         <outlet property="goForwardToolbarItem" destination="lvA-XX-ff8" id="atu-tT-10f"/>
-                        <outlet property="locationTextField" destination="HZe-bv-v8m" id="swq-mS-YNi"/>
+                        <outlet property="locationTextFieldView" destination="x6P-bm-4Hq" id="PxV-Zm-45D"/>
                         <outlet property="tabsView" destination="9NY-lB-AHX" id="nd2-P5-Ihi"/>
                         <outlet property="toolbar" destination="hx7-2Y-sJ9" id="LxU-4D-q8o"/>
                     </connections>
@@ -757,12 +757,12 @@
                                 <action selector="newTabAction:" target="XfG-lQ-9wD" id="s5C-YN-Jk3"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="D62B847D-28B5-429F-9090-8A06CAB53976" label="Go Back" paletteLabel="Go Back" tag="-1" image="chevron.left" catalog="system" bordered="YES" sizingBehavior="auto" id="9bF-Lq-Gs5">
+                        <toolbarItem implicitItemIdentifier="D62B847D-28B5-429F-9090-8A06CAB53976" label="Go Back" paletteLabel="Go Back" tag="-1" image="chevron.left" catalog="system" bordered="YES" sizingBehavior="auto" navigational="YES" id="9bF-Lq-Gs5">
                             <connections>
                                 <action selector="goBackAction:" target="XfG-lQ-9wD" id="xDh-Dn-M96"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="492374E0-3659-43EE-B614-8709371B7C1A" label="Go Forward" paletteLabel="Go Forward" tag="-1" image="chevron.right" catalog="system" bordered="YES" sizingBehavior="auto" id="lvA-XX-ff8">
+                        <toolbarItem implicitItemIdentifier="492374E0-3659-43EE-B614-8709371B7C1A" label="Go Forward" paletteLabel="Go Forward" tag="-1" image="chevron.right" catalog="system" bordered="YES" sizingBehavior="auto" navigational="YES" id="lvA-XX-ff8">
                             <connections>
                                 <action selector="goForwardAction:" target="XfG-lQ-9wD" id="CxK-2x-dZ2"/>
                             </connections>
@@ -772,23 +772,15 @@
                                 <action selector="refreshAction:" target="XfG-lQ-9wD" id="6jA-js-D2n"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="42E4FAAC-51B5-4D6A-8665-54D68955FAB2" label="Location" paletteLabel="Location" sizingBehavior="auto" id="4LO-bH-nd0">
-                            <nil key="toolTip"/>
-                            <textField key="view" verticalHuggingPriority="750" contentType="url" id="HZe-bv-v8m">
-                                <rect key="frame" x="0.0" y="14" width="565" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" bezelStyle="round" id="XWV-w7-JCT">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="navigateToLocationAction:" target="XfG-lQ-9wD" id="kxw-hU-diK"/>
-                                </connections>
-                            </textField>
-                        </toolbarItem>
                         <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="V9h-1i-JRl"/>
                         <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="CSQ-9r-tyF"/>
+                        <toolbarItem implicitItemIdentifier="A2764256-64AC-4510-8840-30791856F882" label="Location" paletteLabel="Location" tag="-1" sizingBehavior="auto" id="zBi-Z1-0fw">
+                            <nil key="toolTip"/>
+                            <customView key="view" id="x6P-bm-4Hq" customClass="ProgressTextFieldView" customModule="Orion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="14" width="163" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </customView>
+                        </toolbarItem>
                     </allowedToolbarItems>
                     <defaultToolbarItems>
                         <toolbarItem reference="9bF-Lq-Gs5"/>
@@ -796,7 +788,7 @@
                         <toolbarItem reference="CSQ-9r-tyF"/>
                         <toolbarItem reference="wyr-oZ-ygO"/>
                         <toolbarItem reference="V9h-1i-JRl"/>
-                        <toolbarItem reference="4LO-bH-nd0"/>
+                        <toolbarItem reference="zBi-Z1-0fw"/>
                         <toolbarItem reference="am0-HJ-r64"/>
                         <toolbarItem reference="V9h-1i-JRl"/>
                     </defaultToolbarItems>

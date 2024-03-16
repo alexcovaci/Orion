@@ -6,7 +6,7 @@ class BrowserViewController: NSViewController {
     @IBOutlet var toolbar: NSToolbar!
     @IBOutlet weak var goBackToolbarItem: NSToolbarItem!
     @IBOutlet weak var goForwardToolbarItem: NSToolbarItem!
-    @IBOutlet weak var locationTextField: NSTextField!
+    @IBOutlet weak var locationTextFieldView: ProgressTextFieldView!
     @IBOutlet weak var tabsView: TabsView!
     @IBOutlet weak var contentView: NSView!
     private var dependencyContainer: DependencyContainer
@@ -80,7 +80,7 @@ class BrowserViewController: NSViewController {
         browserCoordinator.selectedTab()?.$url
             .receive(on: RunLoop.main)
             .sink { [weak self] url in
-                self?.locationTextField.stringValue = url?.absoluteString ?? ""
+                self?.locationTextFieldView.textField.stringValue = url?.absoluteString ?? ""
             }
             .store(in: &tabCancellables)
         
@@ -95,6 +95,13 @@ class BrowserViewController: NSViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] canGoForward in
                 self?.goForwardToolbarItem.action = canGoForward ? #selector(self?.goForwardAction) : nil
+            }
+            .store(in: &tabCancellables)
+        
+        browserCoordinator.selectedTab()?.$loadingProgress
+            .receive(on: RunLoop.main)
+            .sink { [weak self] loadingProgress in
+                self?.locationTextFieldView.updateProgress(loadingProgress)
             }
             .store(in: &tabCancellables)
     }
@@ -145,7 +152,7 @@ extension BrowserViewController: NSToolbarDelegate {
         view.window?.toolbar = toolbar
         view.window?.toolbarStyle = .unified
         
-        locationTextField.focusRingType = .none
+        locationTextFieldView.textField.action = #selector(navigateToLocationAction(_:))
     }
     
     @objc private func extensionToolbarItemClicked(_ toolbarItem: NSToolbarItem) {
@@ -184,13 +191,12 @@ extension BrowserViewController: NSToolbarDelegate {
     
     @IBAction func newTabAction(_ sender: Any) {
         browserCoordinator.addTab(TabModel(url: URL(string: "https://kagi.com")))
-        locationTextField.becomeFirstResponder()
+        locationTextFieldView.textField.becomeFirstResponder()
     }
     
     @IBAction func navigateToLocationAction(_ sender: Any) {
-        browserCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextField.stringValue)
-        
-        locationTextField.resignFirstResponder()
+        browserCoordinator.selectedTab()?.webKitController?.navigateToLocation(locationTextFieldView.textField.stringValue)
+        locationTextFieldView.textField.resignFirstResponder()
     }
     
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
