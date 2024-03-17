@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2801AD6A2B9E6C0D0039C92B /* com.apple.WebKit.Networking.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD632B9E6C0D0039C92B /* com.apple.WebKit.Networking.xpc */; };
-		2801AD6B2B9E6C0D0039C92B /* com.apple.WebKit.WebContent.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD642B9E6C0D0039C92B /* com.apple.WebKit.WebContent.xpc */; };
-		2801AD6C2B9E6C0D0039C92B /* com.apple.WebKit.Model.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD652B9E6C0D0039C92B /* com.apple.WebKit.Model.xpc */; };
-		2801AD6D2B9E6C0D0039C92B /* com.apple.WebKit.GPU.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD662B9E6C0D0039C92B /* com.apple.WebKit.GPU.xpc */; };
-		2801AD6E2B9E6C0D0039C92B /* com.apple.WebKit.WebContent.CaptivePortal.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD672B9E6C0D0039C92B /* com.apple.WebKit.WebContent.CaptivePortal.xpc */; };
-		2801AD6F2B9E6C0D0039C92B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2801AD682B9E6C0D0039C92B /* WebKit.framework */; };
-		2801AD702B9E6C0D0039C92B /* com.apple.WebKit.WebContent.Development.xpc in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD692B9E6C0D0039C92B /* com.apple.WebKit.WebContent.Development.xpc */; };
 		2801AD752B9F265A0039C92B /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801AD742B9F265A0039C92B /* TabsView.swift */; };
 		2801AD772B9F266C0039C92B /* TabsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2801AD762B9F266C0039C92B /* TabsView.xib */; };
 		2801AD7A2B9F403D0039C92B /* NSStoryboard+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801AD792B9F403D0039C92B /* NSStoryboard+Shortcuts.swift */; };
@@ -54,7 +47,40 @@
 		28667A982B9DF0C500F51F57 /* BrowserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667A972B9DF0C500F51F57 /* BrowserWindowController.swift */; };
 		28AB35F72B9E507D003B7B23 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB35F62B9E507D003B7B23 /* ColoredView.swift */; };
 		28E930B32BA722C2002AF391 /* MenuToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E930B22BA722C2002AF391 /* MenuToolbarItemView.swift */; };
+		28E930B52BA7475F002AF391 /* WebKit.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD682B9E6C0D0039C92B /* WebKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28E930B62BA747BC002AF391 /* com.apple.WebKit.GPU.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD662B9E6C0D0039C92B /* com.apple.WebKit.GPU.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930B72BA747BC002AF391 /* com.apple.WebKit.Model.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD652B9E6C0D0039C92B /* com.apple.WebKit.Model.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930B82BA747BC002AF391 /* com.apple.WebKit.Networking.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD632B9E6C0D0039C92B /* com.apple.WebKit.Networking.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930B92BA747BC002AF391 /* com.apple.WebKit.WebContent.CaptivePortal.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD672B9E6C0D0039C92B /* com.apple.WebKit.WebContent.CaptivePortal.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930BA2BA747BC002AF391 /* com.apple.WebKit.WebContent.Development.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD692B9E6C0D0039C92B /* com.apple.WebKit.WebContent.Development.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930BB2BA747BC002AF391 /* com.apple.WebKit.WebContent.xpc in Copy Files */ = {isa = PBXBuildFile; fileRef = 2801AD642B9E6C0D0039C92B /* com.apple.WebKit.WebContent.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E930BD2BA74ABE002AF391 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2801AD682B9E6C0D0039C92B /* WebKit.framework */; };
+		28E930C02BA74DD5002AF391 /* JavaScriptCore.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 28E930BE2BA74DC7002AF391 /* JavaScriptCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		28E930C12BA74DEB002AF391 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E930BE2BA74DC7002AF391 /* JavaScriptCore.framework */; };
+		28E930CB2BA75711002AF391 /* WebCore.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 28E930C92BA7570B002AF391 /* WebCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		28E930B42BA74755002AF391 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				28E930CB2BA75711002AF391 /* WebCore.framework in Copy Files */,
+				28E930B62BA747BC002AF391 /* com.apple.WebKit.GPU.xpc in Copy Files */,
+				28E930B72BA747BC002AF391 /* com.apple.WebKit.Model.xpc in Copy Files */,
+				28E930B82BA747BC002AF391 /* com.apple.WebKit.Networking.xpc in Copy Files */,
+				28E930B92BA747BC002AF391 /* com.apple.WebKit.WebContent.CaptivePortal.xpc in Copy Files */,
+				28E930BA2BA747BC002AF391 /* com.apple.WebKit.WebContent.Development.xpc in Copy Files */,
+				28E930BB2BA747BC002AF391 /* com.apple.WebKit.WebContent.xpc in Copy Files */,
+				28E930B52BA7475F002AF391 /* WebKit.framework in Copy Files */,
+				28E930C02BA74DD5002AF391 /* JavaScriptCore.framework in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2801AD632B9E6C0D0039C92B /* com.apple.WebKit.Networking.xpc */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.xpc-service"; path = com.apple.WebKit.Networking.xpc; sourceTree = "<group>"; };
@@ -105,6 +131,8 @@
 		28667A972B9DF0C500F51F57 /* BrowserWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserWindowController.swift; sourceTree = "<group>"; };
 		28AB35F62B9E507D003B7B23 /* ColoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredView.swift; sourceTree = "<group>"; };
 		28E930B22BA722C2002AF391 /* MenuToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolbarItemView.swift; sourceTree = "<group>"; };
+		28E930BE2BA74DC7002AF391 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JavaScriptCore.framework; sourceTree = "<group>"; };
+		28E930C92BA7570B002AF391 /* WebCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +140,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28E930BD2BA74ABE002AF391 /* WebKit.framework in Frameworks */,
+				28E930C12BA74DEB002AF391 /* JavaScriptCore.framework in Frameworks */,
 				28590EC42BA3A5DE00B5A856 /* Zip in Frameworks */,
-				2801AD6F2B9E6C0D0039C92B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +159,8 @@
 				2801AD692B9E6C0D0039C92B /* com.apple.WebKit.WebContent.Development.xpc */,
 				2801AD642B9E6C0D0039C92B /* com.apple.WebKit.WebContent.xpc */,
 				2801AD682B9E6C0D0039C92B /* WebKit.framework */,
+				28E930BE2BA74DC7002AF391 /* JavaScriptCore.framework */,
+				28E930C92BA7570B002AF391 /* WebCore.framework */,
 			);
 			path = WebKit;
 			sourceTree = "<group>";
@@ -270,6 +301,7 @@
 				28667A862B9DEFD200F51F57 /* Orion */,
 				28590EAF2BA3369D00B5A856 /* Resources */,
 				28667A852B9DEFD200F51F57 /* Products */,
+				28E930BC2BA74ABE002AF391 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -310,6 +342,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		28E930BC2BA74ABE002AF391 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -320,6 +359,7 @@
 				28667A802B9DEFD200F51F57 /* Sources */,
 				28667A812B9DEFD200F51F57 /* Frameworks */,
 				28667A822B9DEFD200F51F57 /* Resources */,
+				28E930B42BA74755002AF391 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -378,12 +418,6 @@
 				2801AD772B9F266C0039C92B /* TabsView.xib in Resources */,
 				28590EDC2BA51B3400B5A856 /* extensions_api.js in Resources */,
 				28667A8C2B9DEFD300F51F57 /* Assets.xcassets in Resources */,
-				2801AD6C2B9E6C0D0039C92B /* com.apple.WebKit.Model.xpc in Resources */,
-				2801AD6D2B9E6C0D0039C92B /* com.apple.WebKit.GPU.xpc in Resources */,
-				2801AD6A2B9E6C0D0039C92B /* com.apple.WebKit.Networking.xpc in Resources */,
-				2801AD702B9E6C0D0039C92B /* com.apple.WebKit.WebContent.Development.xpc in Resources */,
-				2801AD6E2B9E6C0D0039C92B /* com.apple.WebKit.WebContent.CaptivePortal.xpc in Resources */,
-				2801AD6B2B9E6C0D0039C92B /* com.apple.WebKit.WebContent.xpc in Resources */,
 				285FA2242B9E325F005702AA /* TabCollectionViewItem.xib in Resources */,
 				28667A8F2B9DEFD300F51F57 /* Base in Resources */,
 			);
@@ -589,6 +623,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-Wl,-dyld_env",
+					"-Wl,DYLD_VERSIONED_FRAMEWORK_PATH=$(PROJECT_DIR)/WebKit",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.placeholder.Orion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -621,6 +659,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-Wl,-dyld_env",
+					"-Wl,DYLD_VERSIONED_FRAMEWORK_PATH=$(PROJECT_DIR)/WebKit",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.placeholder.Orion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
