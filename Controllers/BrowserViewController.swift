@@ -13,6 +13,7 @@ class BrowserViewController: NSViewController {
     private var cancellables = Set<AnyCancellable>()
     private var tabCancellables = Set<AnyCancellable>()
     private var selectedTab: TabModel? = nil
+    private var installedExtensionIds: Set<String> = Set()
     @Injected var browserCoordinator: BrowserCoordinator
     @Injected var extensionsCoordinator: ExtensionsCoordinator
     
@@ -133,14 +134,42 @@ class BrowserViewController: NSViewController {
     }
     
     private func updateToolbarWithExtensions(_ extensions: [ExtensionModel]) {
-        extensions.forEach { extensionModel in
-            let itemIdentifier = NSToolbarItem.Identifier(extensionModel.id)
+        let newExtensionIds = Set(extensions.map({ $0.id }))
+        let addedExtensionIds = newExtensionIds.subtracting(installedExtensionIds)
+        let removedExtensionIds = installedExtensionIds.subtracting(newExtensionIds)
+        installedExtensionIds = newExtensionIds
+        
+        removedExtensionIds.forEach { extensionId in
+            if let index = toolbar.items.firstIndex(where: { $0.itemIdentifier.rawValue == extensionId }) {
+                toolbar.removeItem(at: index)
+            }
+        }
+        
+        addedExtensionIds.forEach { extensionId in
+            let itemIdentifier = NSToolbarItem.Identifier(extensionId)
             
             if toolbar.items.contains(where: { $0.itemIdentifier == itemIdentifier }) {
                 return
             }
             
             toolbar.insertItem(withItemIdentifier: itemIdentifier, at: toolbar.items.count)
+        }
+    }
+    
+    @objc func removeExtension(_ sender: NSMenuItem) {
+        Task {
+            guard let window = self.view.window else { return }
+            guard let extensionModel = sender.representedObject as? ExtensionModel else { return }
+            
+            let alert = SimpleAlert()
+            alert.setMessage("Are you sure you want to remove the extension '\(extensionModel.manifest.name ?? "")'?")
+            alert.addButton("Remove") { [weak self] in
+                guard let self else { return }
+                extensionsCoordinator.removeExtension(extensionModel)
+            }
+            alert.addButton("Cancel") {
+            }
+            await alert.beginSheetModal(for: window)
         }
     }
 }
@@ -208,14 +237,26 @@ extension BrowserViewController: NSToolbarDelegate {
         toolbarItem.label = extensionModel.manifest.name ?? ""
         toolbarItem.paletteLabel = extensionModel.manifest.name ?? ""
         toolbarItem.toolTip = extensionModel.manifest.name ?? ""
-        toolbarItem.target = self
-        toolbarItem.action = #selector(extensionToolbarItemClicked(_:))
         
+        var toolbarItemImage: NSImage? = nil
         if let largestImage = extensionModel.manifest.icons?.largestImage {
             let imagePath = extensionModel.directory.appending(path: largestImage, directoryHint: .notDirectory)
             let image = NSImage(contentsOf: imagePath)
-            toolbarItem.image = image
+            toolbarItemImage = image
         }
+        
+        let menu = NSMenu()
+        let menuItem = NSMenuItem(title: "Remove Extension", action: #selector(removeExtension), keyEquivalent: "")
+        menuItem.representedObject = extensionModel
+        menuItem.target = self
+        menu.addItem(menuItem)
+        
+        let toolbarItemView = MenuToolbarItemView(toolbarItem: toolbarItem)
+        toolbarItemView.image = toolbarItemImage
+        toolbarItemView.target = self
+        toolbarItemView.action = #selector(extensionToolbarItemClicked(_:))
+        toolbarItemView.longPressMenu = menu
+        toolbarItem.view = toolbarItemView
         
         return toolbarItem
     }

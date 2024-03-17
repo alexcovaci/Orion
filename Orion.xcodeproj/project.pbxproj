@@ -53,6 +53,7 @@
 		28667A8F2B9DEFD300F51F57 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 28667A8E2B9DEFD300F51F57 /* Base */; };
 		28667A982B9DF0C500F51F57 /* BrowserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28667A972B9DF0C500F51F57 /* BrowserWindowController.swift */; };
 		28AB35F72B9E507D003B7B23 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB35F62B9E507D003B7B23 /* ColoredView.swift */; };
+		28E930B32BA722C2002AF391 /* MenuToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E930B22BA722C2002AF391 /* MenuToolbarItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		28667A902B9DEFD300F51F57 /* Orion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orion.entitlements; sourceTree = "<group>"; };
 		28667A972B9DF0C500F51F57 /* BrowserWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserWindowController.swift; sourceTree = "<group>"; };
 		28AB35F62B9E507D003B7B23 /* ColoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredView.swift; sourceTree = "<group>"; };
+		28E930B22BA722C2002AF391 /* MenuToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToolbarItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +305,7 @@
 				28590EC92BA44D3A00B5A856 /* SimpleAlert.swift */,
 				28590EE92BA642DA00B5A856 /* ProgressTextFieldView.swift */,
 				28590EEB2BA6489200B5A856 /* VerticallyCenteredTextFieldCell.swift */,
+				28E930B22BA722C2002AF391 /* MenuToolbarItemView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				28590ECA2BA44D3A00B5A856 /* SimpleAlert.swift in Sources */,
 				285FA22F2B9E393D005702AA /* BrowserCoordinator.swift in Sources */,
 				28590ED62BA4FE0900B5A856 /* ExtensionPopupViewController.swift in Sources */,
+				28E930B32BA722C2002AF391 /* MenuToolbarItemView.swift in Sources */,
 				28667A882B9DEFD200F51F57 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
